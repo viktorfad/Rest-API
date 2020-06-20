@@ -1,4 +1,4 @@
-from flask import abort, make_response, Flask, jsonify, request
+from flask import Flask, abort, make_response,  jsonify, request
 import json
 import os
 
@@ -13,12 +13,12 @@ json_path = os.path.join(dir_path, r"users\users.json")
 with open(json_path, 'r') as file:
     users = json.loads(file.read())
     
-@app.route('/users', methods=['GET'])
+@app.route('/users', methods = ['GET'])
 def get_users():
 
     return jsonify({ 'users': users } )
    
-@app.route('/users/<int:user_id>', methods=['GET'])
+@app.route('/users/<int:user_id>', methods = ['GET'])
 def get_user(user_id):
 
     user = list(filter(lambda u: u['id'] == user_id, users))
